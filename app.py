@@ -15,11 +15,7 @@ def predict():
     For rendering results on HTML GUI
     '''
     int_features = [int(x) for x in request.form.values()]
-    return render_template('index.html', prediction_text=model.predict([np.array(int_features)]))               
-    output = round(prediction[0], 2)
-
-    return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
-
+    return render_template('index.html', prediction_text=model.predict([np.array(int_features)]))             
 
 if __name__ == "__main__":
     app.run(debug=True)
