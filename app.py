@@ -18,6 +18,7 @@ def predict():
     '''
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
+    print(final_features)
     output = model.predict(final_features)
     return render_template('index.html', prediction_text='Group: {}'.format(output))
 
