@@ -7,7 +7,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html', prediction_text=format(model.predict([[1,1,1,1,1,1,1,1,1,1,]])))         
+    return render_template('index.html', prediction_text=model.predict([[1,1,1,1,1,1,1,1,1,1,]]))         
 
     return render_template('index.html')
 
