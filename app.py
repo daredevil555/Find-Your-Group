@@ -15,7 +15,7 @@ def predict():
     For rendering results on HTML GUI
     '''
     int_features = [int(x) for x in request.form.values()]
-    return render_template('index.html', prediction_text=model.predict([np.array(int_features)]))             
+    return render_template('index.html', prediction_text=model.predict(np.array(int_features)))             
 
 if __name__ == "__main__":
     app.run(debug=True)
