@@ -10,17 +10,13 @@ model = pickle.load(open('model.pkl', 'rb'))
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST','GET'])
 def predict():
-    '''
-    For rendering results on HTML GUI
-    '''
-    print("final_featuresz")
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     print(final_features)
     output = model.predict(final_features)
-    return render_template('index.html', prediction_text='Group: {}'.output)
+    return render_template('index.html', prediction_text=output)
 
 
 if __name__ == "__main__":
