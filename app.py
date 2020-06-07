@@ -6,9 +6,7 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
-def home():
-    return render_template('index.html', prediction_text=model.predict([[1,1,1,1,1,1,1,1,1,1,]]))         
-
+def home():         
     return render_template('index.html')
 
 @app.route('/predict',methods=['POST'])
