@@ -14,8 +14,11 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    int_features = [int(x) for x in request.form.values()]        
-    return render_template('index.html', prediction_text=model.predict(np.array(int_features).reshape(1,10)))         
+    int_features = [int(x) for x in request.form.values()]  
+    final_features=np.array(int_features).reshape(1,10)
+    return render_template('index.html', prediction_text=final_features)
+    pred=model.predict(final_features)
+    return render_template('index.html', prediction_text=pred[0])         
 
 if __name__ == "__main__":
     app.run(debug=True)
