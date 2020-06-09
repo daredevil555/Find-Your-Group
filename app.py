@@ -1,10 +1,9 @@
 import numpy as np
 from flask import Flask, request, render_template
-import pickle
+import joblib
 
 app = Flask(__name__)
-with open('model.pickle','rb') as file:
-    mp = pickle.load(file)
+mp = joblib.load('finalized_model.sav')
 
 @app.route('/')
 def home():
