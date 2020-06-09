@@ -3,6 +3,8 @@ from flask import Flask, request, render_template
 import pickle5 as pickle
 
 app = Flask(__name__)
+with open('model.pickle','rb') as file:
+    mp = pickle.load(file)
 
 @app.route('/')
 def home():
@@ -15,9 +17,8 @@ def predict():
     '''
     int_features = [int(x) for x in request.form.values()]
     final_features = np.array(int_features).reshape(1,10)
-    model = pickle.load(open('model.pkl', 'rb'))
-    return render_template('index.html', prediction_text=final_features)
-    output = model.predict(final_features)
+    output = mp.predict(final_features)
+    return render_template('index.html', prediction_text=output)
     
 
 if __name__ == "__main__":
