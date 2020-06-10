@@ -16,8 +16,8 @@ def predict():
     '''
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
-    output = mp.predict(final_features)
-    return render_template('index.html', prediction_text=output)
+    mp.predict(final_features)
+    return render_template('index.html', prediction_text=final_features)
     
 
 if __name__ == "__main__":
